@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded",() => {
                 "typed": "",
                 "word": word[0],
                 "letterLength":word[0].length,
+                "meaning":word[1],
             });
         };
     };
@@ -81,13 +82,18 @@ document.addEventListener("DOMContentLoaded",() => {
             const panel = document.createElement("div");
             const typedSpan = document.createElement("span");
             const untypedSpan = document.createElement("span");
-
+            // 追加
+            const meaningDiv = document.createElement("div");
+            meaningDiv.className = "panel-meaning";
+            meaningDiv.textContent = wordObjList[i]["meaning"];
+            // 追加ここまで
             panel.id = "panel-" + i;
             panel.className = "panel";
             typedSpan.id = "typed-"+i;
             typedSpan.className = "typed";
             untypedSpan.id = "untyped-"+i;
             untypedSpan.className = "untyped"
+
 
             //3
             untypedSpan.textContent = wordObjList[i]["untyped"];
@@ -96,6 +102,9 @@ document.addEventListener("DOMContentLoaded",() => {
 
             panel.appendChild(typedSpan);
             panel.appendChild(untypedSpan);
+
+            panel.appendChild(meaningDiv); // パネルに追加
+
             panelContainer.appendChild(panel);
         }
         //5
@@ -233,6 +242,28 @@ document.addEventListener("DOMContentLoaded",() => {
 
     })
 
+    function showWordMeaning(){
+        const wordMeanSection = document.getElementById("word-meanings");
+        const table = document.getElementById("word-table");
+        wordObjList.forEach(element => {
+            let tableRow = document.createElement("div");
+            let tableDataWord = document.createElement("p");
+            let tableDataRemarks = document.createElement("p");
+
+            tableDataWord.textContent = element["word"];
+            tableDataRemarks.textContent = element["meaning"];
+
+            tableRow.classList.add("typed-words");
+            tableDataWord.classList.add("words");
+            tableDataRemarks.classList.add("words");
+
+            tableRow.appendChild(tableDataWord);
+            tableRow.appendChild(tableDataRemarks);
+            table.appendChild(tableRow);
+        })
+        wordMeanSection.style.display = "block";
+    };
+
     function processEndGame(){
         //1
         clearTimeout(timeoutID);
@@ -249,6 +280,7 @@ document.addEventListener("DOMContentLoaded",() => {
             panel.classList.remove("active","faded");
         };
         //4
+        showWordMeaning();
         startFlag = 3;
         window.scrollTo({
             top: 100,      // 縦スクロールの位置

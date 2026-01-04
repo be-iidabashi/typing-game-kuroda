@@ -14,7 +14,7 @@ html{
     opacity: 0.02;
 }
 body {
-    background:linear-gradient(70deg, rgba(230, 45, 8, 0.4), rgba(255, 255, 255, 0.4));
+    background:linear-gradient(70deg, rgba(230, 193, 8, 0.4), rgba(255, 255, 255, 0.4));
     background-attachment: fixed;
     min-height: 100%;
     margin: 0;
@@ -45,17 +45,21 @@ input {
 }
 
 .logo-str {
+    color:#e6b813;
     display: block;
     margin-top:45px;
     margin-left: 5px;
+    text-shadow: #000 3px 3px 5px;
+    letter-spacing: 4px;
+    font-size: 2em; 
 }
 
 .reload {
     cursor: pointer;
     width: fit-content;
     padding: 1% 5%;
-    border: 1px solid #000;
-    background-color: #fff;
+    border: 1px solid #fa9c04;
+    background-color: #ecc503;
     border-radius: 20px;
     position: relative;
     left: 2vw;
@@ -93,11 +97,25 @@ input {
     box-sizing: border-box;
     cursor: pointer;
     text-align: center;
-    min-width: 242px;
+    /* min-width: 242px; */
 }
 
+#sobu {
+    background-color: rgba(167, 158, 22, 0.46);
+    border: 1px solid #a5992c;
+    padding: 1em 2em;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    flex-basis: 30%;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    /* min-width: 242px; */
+}
+
+
 .active-level {
-    background-color: #7eee3e;
+    background-color: #338106;
     color: #fff;
 }
 
@@ -135,19 +153,27 @@ input {
     font-size: 1.2em;
 }
 
+/* 単語のスタイル */
+.untyped, .typed {
+    font-size: 1.1em; /* 少し小さく調整 */
+    line-height: 1.2;
+}
+
 .panel {
     background: #6cf;
     color: #222;
     border-radius: 50%;
-    font-size: 1em;
-    width: 100px;
-    height: 100px;
+    width: 120px; /* 少し大きくすると見やすいです */
+    height: 120px;
     display: flex;
+    flex-direction: column; /* 縦に並べる */
     align-items: center;
     justify-content: center;
     font-weight: bold;
     box-shadow: 0 2px 8px #4448;
     margin-left: 5%;
+    padding: 10px; /* 内側に余白を作る */
+    text-align: center;
 }
 
 .faded {
@@ -195,4 +221,28 @@ input {
     margin-bottom: 1%;
 }
 
+#word-meanings {
+    display: none;
+    margin: 0 auto;
+    width: 40%;
+    min-width: 300px;
+}
 
+.meaning-heading {
+    text-align: center;
+}
+
+.typed-words {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.words {
+    width: 45%;
+    margin-left: 5%;
+}
+
+/* アクティブなパネルの意味の色を見やすく */
+.active .panel-meaning {
+    color: #333;
+}
